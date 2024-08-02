@@ -19,7 +19,7 @@ namespace EmployeeDirectory.Controllers
         [HttpPost("add")]
         public IActionResult Add([FromBody]Employee employee)
         {
-            return Ok(_employeeService.CreateEmployeeAsync(employee));
+            return Ok(_employeeService.CreateEmployeeAsync(employee).Result);
         }
 
         [HttpGet("{id}")]
@@ -27,25 +27,25 @@ namespace EmployeeDirectory.Controllers
         {
             //Task<Employee> fetchedEmp = qRCodeService.GetEmployee(id);
 
-            return Ok(_employeeService.GetEmployeeByIdAsync(id));
+            return Ok(_employeeService.GetEmployeeByIdAsync(id).Result);
         }
 
         [HttpPut("Update/{id}")]
         public IActionResult Update([FromBody]Employee employee, int id)
         {
-            return Ok(_employeeService.UpdateEmployeeAsync(employee, id));
+            return Ok(_employeeService.UpdateEmployeeAsync(employee, id).Result);
         }
 
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok(_employeeService.DeleteEmployeeAsync(id));
+            return Ok(_employeeService.DeleteEmployeeAsync(id).Result);
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_employeeService.GetAllEmployeesAsync());
+            return Ok(_employeeService.GetAllEmployeesAsync().Result);
         }
     }
 }

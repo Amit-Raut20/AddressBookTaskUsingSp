@@ -5,10 +5,10 @@ namespace EmployeeDirectory.Services.Interfaces
 {
     public interface IEmployeeService
     {
-        IEnumerable<Employee> GetAllEmployeesAsync();
-        Employee GetEmployeeByIdAsync(int id);
-        int CreateEmployeeAsync(Employee employee);
-        int UpdateEmployeeAsync(Employee employee, int id);
-        int DeleteEmployeeAsync(int id);
+        public Task<IEnumerable<Employee>> GetAllEmployeesAsync();
+        public Task<Employee> GetEmployeeByIdAsync(int id);
+        public Task<int> CreateEmployeeAsync(Employee employee);
+        public Task<int> UpdateEmployeeAsync(Employee employee, int id);
+        public Task<int> DeleteEmployeeAsync(int id);
     }
 }

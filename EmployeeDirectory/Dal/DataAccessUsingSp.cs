@@ -22,7 +22,7 @@ namespace EmployeeDirectory.Dal
 
         public async Task<int> AddEmployeeAsync(Employee employee)
         {
-            int rowsAffected;
+            decimal rowsAffected;
 
             using (SqlConnection conn = new SqlConnection(GetConnectionString()))
             {
@@ -41,12 +41,12 @@ namespace EmployeeDirectory.Dal
                     command.Parameters.AddWithValue("@Website", employee.Website);
                     command.Parameters.AddWithValue("@Address", employee.Address);
 
-                    rowsAffected = command.ExecuteNonQuery();
-                    //rowsAffected = (int)await command.ExecuteScalarAsync();
+                    //rowsAffected = command.ExecuteNonQuery();
+                    rowsAffected = (decimal)await command.ExecuteScalarAsync();
                 }
             }
 
-            return rowsAffected;
+            return Convert.ToInt32(rowsAffected);
         }
 
         public async Task<int> DeleteEmployeeAsync(int id)
@@ -93,6 +93,7 @@ namespace EmployeeDirectory.Dal
                         Console.WriteLine(reader);
                         Employee emp = new Employee
                         {
+                            Id = reader["Id"].ToString(),
                             Name = reader["Name"].ToString(),
                             Email = reader["Email"].ToString(),
                             Mobile = reader["Mobile"].ToString(),

@@ -13,44 +13,44 @@ namespace EmployeeDirectory.Services
         {
             _dataAccessUsingSp = dataAccessUsingSp;
         }
-        public int CreateEmployeeAsync(Employee employee)
+        public async Task<int> CreateEmployeeAsync(Employee employee)
         {
             //DataAccess dataAccess = new DataAccess();
             //DataAccessUsingSp dataAccessUsingSp = new DataAccessUsingSp();
             //_dataAccessUsingSp = new DataAccessUsingSp();
-            return _dataAccessUsingSp.AddEmployeeAsync(employee).Result;
+            return await _dataAccessUsingSp.AddEmployeeAsync(employee);
         }
 
-        public int DeleteEmployeeAsync(int id)
+        public async Task<int> DeleteEmployeeAsync(int id)
         {
             //DataAccess dataAccess = new DataAccess();
             //DataAccessUsingSp dataAccessUsingSp = new DataAccessUsingSp();
             //_dataAccessUsingSp = new DataAccessUsingSp();
-            return _dataAccessUsingSp.DeleteEmployeeAsync(id).Result;
+            return await _dataAccessUsingSp.DeleteEmployeeAsync(id);
 
         }
 
-        public IEnumerable<Employee> GetAllEmployeesAsync()
+        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
             //DataAccessUsingSp dataAccessUsingSp = new DataAccessUsingSp();
             //_dataAccessUsingSp = new DataAccessUsingSp();
-            return _dataAccessUsingSp.GetAllEmployeesAsync().Result;
+            return await _dataAccessUsingSp.GetAllEmployeesAsync();
         }
 
-        public Employee GetEmployeeByIdAsync(int id)
-        {
-            //DataAccess dataAccess = new DataAccess();
-            //DataAccessUsingSp dataAccessUsingSp = new DataAccessUsingSp();
-            //_dataAccessUsingSp = new DataAccessUsingSp();
-            return _dataAccessUsingSp.GetEmployeeByIdAsync(id).Result;
-        }
-
-        public int UpdateEmployeeAsync(Employee employee, int id)
+        public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
             //DataAccess dataAccess = new DataAccess();
             //DataAccessUsingSp dataAccessUsingSp = new DataAccessUsingSp();
             //_dataAccessUsingSp = new DataAccessUsingSp();
-            return _dataAccessUsingSp.UpdateEmployeeAsync(employee, id).Result;
+            return await _dataAccessUsingSp.GetEmployeeByIdAsync(id);
+        }
+
+        public async Task<int> UpdateEmployeeAsync(Employee employee, int id)
+        {
+            //DataAccess dataAccess = new DataAccess();
+            //DataAccessUsingSp dataAccessUsingSp = new DataAccessUsingSp();
+            //_dataAccessUsingSp = new DataAccessUsingSp();
+            return await _dataAccessUsingSp.UpdateEmployeeAsync(employee, id);
         }
     }
 }

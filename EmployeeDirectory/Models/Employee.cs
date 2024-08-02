@@ -1,8 +1,13 @@
-﻿namespace EmployeeDirectory.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+
+namespace EmployeeDirectory.Models
 {
     public class Employee
     {
-        //public int Id { get; set; }
+        [Key]
+        //[JsonIgnore]
+        public string? Id { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
             
